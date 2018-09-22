@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //JS对象
+  // 方法：
+  var str = "只要你坚持，就知道。。。"
+    console.log(str.charAt(3)); //坚
+    console.log(str.charAt(30)); //什么都没有
+
+    console.log(str.charCodeAt(3));//22362
+    console.log(str.charCodeAt(6));//23601
+    console.log(str.charCodeAt(30));//NaN(非数值)
+
+    console.log(str.search("只"));//0
+    console.log(str.search("知道"));//7(第一个字对应的字符)
+    console.log(str.search(/只/));//0
+    console.log(str.search(/知道/));//7(第一个字对应的字符)
+    console.log(str.search(/知道/g));//7(第一个字对应的字符)
+    //g在正则表达式里，表示全局找，但是在search里，只能搜索一次
+    console.log(str.search(/不/));//-1
+
+
+    console.log(str.match("只"));//["只", index: 0, input: "只要你坚持，就知道。。。"]
+    console.log(str.match(/只/));//["只", index: 0, input: "只要你坚持，就知道。。。"]
+    console.log(str.match(/只/g));//["只"]
+    console.log(str.match(/aa/g));//null
+
+
+    // 替换字符串
+    var str = "AA BB CC DD,AA BB CC DD";
+    console.log(str.replace('AA','aa'));//aa BB CC DD,AA BB CC DD
+    console.log(str.replace(/BB/,'bb'));//AA bb CC DD,AA BB CC DD
+    console.log(str.replace(/CC/g,'cc'));//AA BB cc DD,AA BB cc DD
+
+    // 连接字符串
+    var str1 = "今天是星期一,";
+    var str2 = "我狠开心,";
+    var str3 = "因为又可以学习了";
+    console.log(str1.concat(str2,str3));//今天是星期一,我狠开心,因为又可以学习了
+
+
+    // 分割字符串
+    var str = "姓名:小丽;性别:女;年龄:18";
+    console.log(str.split(';'));//["姓名:小丽","性别:女","年龄:18"]
+    console.log(str.split(/:/));//["姓名", "小丽;性别", "女;年龄", "18"]
+
+    // 截取字符串
+    var str = "将来的你一定会感谢现在努力的你!"
+    console.log(str.slice(4,9));//一定会感谢,左边的闭合的，右边是开放的
+    console.log(str.slice(-4));//力的你!
+    console.log(str.slice(-2));//你!
+ 
+    // -4倒数第4个字符，第二个位置不能给负值
+
+    console.log(str.substr(4,9));//一定会感谢现在努力
+    console.log(str.substring(4,9));//一定会感谢
+    console.log(str.substring(-4));//将来的你一定会感谢现在努力的你!(完整的字符串)
+    // 没有负值
+  </script>
+</body>
+</html>

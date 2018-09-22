@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    
+  .box1{
+    height: 1000px;
+    border:1px solid red;
+    background:pink;
+    font-size:50px;
+    line-height: 1000px;
+    text-align: center;
+    
+  }
+  .navBox{
+    /* 固定在浏览器窗口的最顶端 */
+    height:40px;width:100%;
+    background:rgba(0,0,0,0.5);
+    line-height: 40px;
+    color:white;
+    position:fixed;
+    top:0;
+  }
+  .toggle2{
+    background:white;
+    color:blue;
+  }
+  </style>
+ 
+</head>
+<body>
+  <div class="navBox">
+    导航文字
+  </div>
+  <div class="box1">
+    这是我们当前的内容区域
+  </div>
+<script>
+      //当浏览器滚动的时候:去做一件事件
+      //当滚动条发生变化的时候
+    
+      window.onscroll = function(){
+        console.log('页面滚动');
+        //距离顶部滚动的间距 scrollTop属性
+        // console.log(document.body.scrollTop);
+        var top = document.documentElement.scrollTop||
+        document.body.scrollTop;
+        if(top==0){//导航条是初始状态
+          document.querySelector('.navBox').classList.remove('toggle2'); 
+        }else if(top>=120){//导航条：切换白色的背景
+          document.querySelector('.navBox').classList.add('toggle2');
+        }
+      }
+      </script>
+</body>
+</html>

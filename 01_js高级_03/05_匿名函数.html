@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+ 
+  <script>
+  //1)匿名函数赋给一个对象
+  var aa = function(num){
+    console.log('输出一个值'+num)
+    console.log(num);//20
+  }  
+  aa();//调用aa这个方法（函数） 输出一个值undefined
+  aa(20);//输出一个值20
+  //num是形参,是局部变量,只能在函数内
+  // console.log(bb);//Uncaught ReferenceError: bb is not defined 报错
+  // console.log(num);//ReferenceError: num is not defined(anonymous function) 报错
+  bb = 30;//自动做声明处理 var aa;放到最顶端
+  console.log(bb);//30
+
+  //2)自调:函数声明完成自动调用
+  //(function(形参){})([参数1,参数2....])
+  //[参数1,参数2....]是实参
+  (function(name){
+    console.log('姓名:'+name);//姓名:apple
+  })('apple');
+// (function(形参){函数执行体})(实参)
+
+  //3)可以作为一个返回值,通过return返回
+  function fun1(){
+    console.log('命名函数1');
+    //return 可以放任何值
+    return function(num){
+      console.log('匿名函数',num);
+    }
+  }
+  fun1();//命名函数1
+  var rs = fun1();
+  console.log(rs);//匿名函数
+  // function(num){
+  //     console.log('匿名函数',num);
+  //   }
+  rs(20);//匿名函数 20
+  //第二次调用
+  fun1()(30);//命名函数1 匿名函数 30
+
+  //譬如date对象
+  var date = new Date();
+      date.getFullYear();
+      new.Date().getMonth();
+  </script>
+</body>
+</html>

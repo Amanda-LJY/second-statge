@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./jq/jquery-1.9.1.min.js"></script>
+  <style>
+  .calculator{width:600px;height:450px;border:2px solid black;}
+  .calculator span{width:580px;height:75px;border:2px solid black;display:inline-block;margin:6px;font-size:50px;}
+  input[type=button]{
+    width:100px;height:80px;
+    border:2px solid black;
+    background:white;font-size:50px;
+     }
+  p{
+    margin-left:20px;
+  }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <span></span><br>
+    <p>
+      <input type="button" value='1' name='num'>
+      <input type="button" value='2' name='num'>
+      <input type="button" value='3' name='num'>
+      <input type="button" value='4' name='num'>
+    </p>
+    <p>
+        <input type="button" value='5' name='num'>
+        <input type="button" value='6' name='num'>
+        <input type="button" value='7' name='num'>
+        <input type="button" value='8' name='num'>
+        <input type="button" value='C' name='clear'>
+    </p>
+    <p>
+        <input type="button" value='9' name='num'>
+        <input type="button" value='0' name='num'>
+        <input type="button" value='+' name='push'>
+        <input type="button" value='-' name='reduce'>
+        <input type="button" value='=' name='equal'>
+    </p>
+  </div>
+  <script>
+   var input = document.querySelectorAll('input[name=num]');
+   var span = document.querySelector('span');
+   for(var i=0;i<input.length;i++){
+     input[i].onclick =function(){
+       span.innerHTML += this.value;
+     }
+   }
+   var push = document.querySelector('input[name=push]');
+   push.onclick = function(){
+    span.innerHTML += this.value;
+   }
+   var reduce = document.querySelector('input[name=reduce]');
+   reduce.onclick = function(){
+    span.innerHTML += this.value;
+   }
+   var equal = document.querySelector('input[name=equal]');
+   equal.onclick = function(){
+     var str = span.innerHTML;
+     if(str.indexOf('+')!=-1){
+       var arr = str.split("+");
+       for(var j=0,sum=0;j<arr.length;j++){
+        sum +=Number(arr[j]);
+       }
+       span.innerHTML=sum;
+     }
+     if(str.indexOf('-')!=-1){
+       var arr = str.split("-");
+       for(var j=0,sum=0;j<arr.length;j++){
+        sum = Number(arr[0])- Number(arr[1]);
+       }
+       span.innerHTML=sum;
+     }
+    
+   }
+
+   var clear = document.querySelector('input[name=clear]');
+   clear.onclick = function(){
+    span.innerHTML ='';
+   }
+  </script>
+</body>
+</html>

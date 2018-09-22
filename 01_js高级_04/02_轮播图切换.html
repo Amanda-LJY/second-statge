@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .picture{border:1px solid red;width: 390px;}
+  .picture img{display:none;}
+  .picture img:first-child{display:block;}
+  .points{border:1px solid blue;}
+  .points span{display:inline-block;width:20px;height: 20px;border-radius:50%;background:gray;margin:6px 8px;border:1px solid green;}
+  </style>
+</head>
+<body>
+  <p class="picture">
+    <img src="./images/01.jpeg" >
+    <img src="./images/02.jpeg" >
+    <img src="./images/03.jpeg" >
+  </p>
+  <p class="points">
+    <span></span>
+    <span></span>
+    <span></span>
+  </p>
+  <script>
+  function togglePic(){
+    //函数体内执行过程
+    var spans = document.querySelectorAll('.points span');
+    console.log(spans);
+    var img_obj = document.querySelectorAll('.picture img');
+    
+   for(var i=0;i<spans.length;i++){
+    //  想办法吧i传递到函数体内
+   //自调函数 把每次循环i的值传递进来
+   (function(index){
+     //index是形参，用来接受实参i，所有的形参都是局部变量
+     spans[index].onclick = function aa(){
+      for(var j=0;j<img_obj.length;j++){
+      img_obj[j].style.display = 'none'; 
+      }
+      img_obj[index].style.display = 'block';
+      console.log('切换图片');
+      console.log(index);
+      // 切换图效果
+    }//这也之一种闭包形式
+    // 点击调用属于全局，访问局部函数
+    // 局部函数可以访问局部变量index
+  //调用
+  // spans[i].onclick = aa;
+  // aa(); 
+   })(i);
+    
+    //  spans[i].onclick = function(){
+    //    console.log(this);
+    //    console.log(i);//在这个函数内，i已经循环好了，所以执行完了i=3，遇到函数
+    //    //获取到当前的下标
+
+    //    console.log()
+      
+    //  }
+   }
+  }
+  togglePic();
+  
+  </script>
+</body>
+</html>

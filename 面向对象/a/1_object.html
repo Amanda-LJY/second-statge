@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Insert a title</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+      //lilei: Li Lei  11 会自我介绍
+      var lilei={
+        sname:"Li Lei",
+        sage:11,
+        intr(){//ES6
+          console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+        }
+      }
+      var hmm={
+        sname:"Han Meimei",
+        sage:12,
+        intr(){//ES6
+          console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+        }
+      }
+      //var lilei=new Object;//{} Object()
+      //lilei.sname="Li Lei";
+      //lilei.sage=11;
+      //lilei.intr=function(){
+        //console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+      //}
+      console.dir(lilei);
+      console.log(lilei["sname"]);
+      lilei.intr();
+      lilei["sage"]++;
+      console.log(lilei.sage);//12
+      lilei.intr();
+    </script>
+  </body>
+</html>

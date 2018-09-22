@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  canvas{
+    border:1px solid red;
+    width:300px;height:300px;
+    margin:10px;
+  }
+  
+  </style>
+</head>
+<body>
+  <!-- canvas#canvas$*5 -->
+ <canvas id="canvas1"></canvas>
+ <canvas id="canvas2" height="300"></canvas>
+ <canvas id="canvas3" height="300"></canvas>
+ <canvas id="canvas4" height="300"></canvas>
+ <canvas id="canvas5" height="300"></canvas>
+ <!-- 绘制直线 -->
+  <script>
+  //1)找到画布
+  var canvas1 = document.getElementById('canvas1');
+  //修改宽高，必须修改属性
+  canvas1.width = '300';
+  canvas1.height = '300';
+  console.log('画布的宽：',canvas1.width);
+  console.log('画布的高：',canvas1.height);
+  //2)定义图形类型：2d
+   var context = canvas1.getContext('2d');
+  //3)开始绘制：对context的操作
+    // 设定直线的起点：moveTo(x,y)
+    context.beginPath();
+      context.moveTo(10,10);
+    //设定直线终点的位置lineTo()
+      context.lineTo(150,150);
+      context.lineTo(290,10);
+      context.lineTo(10,10);
+      context.lineTo(150,150);
+     
+    //先挑选颜色或者是样式，修改填充和描边
+    context.fillStyle = 'green';//填充色
+    context.strokeStyle = 'blue';//描边色
+    context.lineWidth = 5;//描边粗细
+    context.lineJoin = 'bevel';//圆角顶点
+    //实际绘图
+      context.stroke();//描边
+      context.fill();//填充
+
+    //重新绘制一个线条
+    //重新开始路径
+    context.beginPath();
+    context.moveTo(0,200);
+    context.lineTo(150,290);
+    context.lineTo(300,200);
+    context.strokeStyle = 'orange';//描边色
+     //实际绘图
+     context.stroke();//描边
+    context.closePath();//闭合路径
+  </script>
+<!-- 绘制矩形 -->
+  <script>
+  var canvas2 = document.getElementById('canvas2');
+  var context = canvas2.getContext('2d');
+  //开始绘制矩形rect(x,y,width,height)
+  context.rect(20,20,100,100);
+  context.fillStyle = 'orange';
+  context.strokeStyle = 'red';  
+  // context.lineWidth = 5;
+  context.lineJoin = 'round';
+  //实际绘图
+  context.stroke();//描边绘图
+  context.fill();
+ 
+
+  //第二个矩形
+  context.fillStyle = 'pink';
+  context.fillRect(150,20,100,100);
+  
+  //第三个矩形 空心的
+
+  context.strokeStyle = 'purple';
+  context.strokeRect(20,150,100,100);
+
+  // 第四个矩形
+  context.beginPath();//开始新路径
+  context.fillStyle = 'yellow';
+  context.strokeStyle = 'skyblue';
+  context.rect(150,150,100,100);
+  context.fill();
+  context.stroke();
+  context.closePath();//闭合新路径
+  //清除形状(橡皮擦)
+  // context.clearRect(0,0,100,100);
+  </script>
+  <!-- 绘制圆形 -->
+  <script>
+    var canvas3 = document.getElementById('canvas3');
+    var context = canvas3.getContext('2d');
+    //开始绘制圆形arc(x,y,半径，起始角，结束角[,方向])
+    context.arc(150,150,50,0,1*Math.PI);
+    context.fill();
+    context.fillStyle = 'skyblue';
+    context.closePath();
+    // context.stroke();
+    
+    //添加一个完整的圆形
+    context.beginPath();
+    context.arc(150,150,25,0,2*Math.PI);
+    context.fill();
+    context.fillStyle = 'red';
+    context.closePath();
+  </script>
+  <!-- 绘制文字-->
+  
+  <script>
+    var canvas4= document.getElementById('canvas4');
+    var context = canvas4.getContext('2d'); 
+    //开始绘制文字
+    context.font = '20px 微软雅黑';//大小 字体 要一起写
+    context.textBaseline = 'top';//基线对齐方式：top
+    context.fillText('等青色等烟雨',0,0);
+
+    //在添加一行文字 只有描边没有填充
+    context.strokeStyle = 'red';
+    context.rotate(45*Math.PI/180);//旋转45度
+    context.translate(100,100);//重新定义画布的坐标点
+    context.strokeText('多多多多多',30,30);
+    //撤销旋转(恢复)
+    context.rotate(-45*Math.PI/180);
+    context.strokeText('好好好好好',120,30);//不要旋转
+
+    
+  </script>
+  <!-- 绘制图片-->
+  <script>
+    var canvas5= document.getElementById('canvas5');
+    var context = canvas5.getContext('2d');
+    //1)创建图片(加载图片)
+      var myImg = new Image();
+      myImg.src = './img/eason.jpg';//引入图片地址
+    //2)实际绘制图片：必须等图片加载完成才能绘制
+      myImg.onload = function(){
+        context.drawImage(myImg,0,0,200,200);
+      }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //1)对象：属性(变量名)+方法(函数名)
+  //应用：对象.属性名;/对象['属性名']
+  //      对象.方法名([参数值1,参数值2,...]);
+
+  // 1)方式1:json对象{}
+  // var obj = {};//声明了一个对象
+  var obj = {
+    uname:'apple',
+    sex:'女',
+    act:function(){//添加方法
+      return '我的名字是'+this.uname+'性别为'+this.sex;
+    }
+  };
+  //调用对象 obj就是一个对象
+  console.log(obj);
+  console.log(obj.uname);//apple
+  console.log(obj.act());//我的名字是apple年龄为18
+
+  //添加属性和方法
+  obj.age = 18;
+  obj.play = function(game){
+    console.log("今天去玩游戏:"+game);
+  }
+
+
+  //obj只一个单个的对象,没有副本的
+  function clone(oldObj){
+    var newObj = {};
+    for(key in oldObj){
+      newObj[key] = oldObj[key];
+    }
+    return newObj;
+  }
+  console.log(clone(obj));
+  //2)创建方式2:new Object()
+  // var obj2 = new Object('apple',10);//在Object里只能识别第一值,显示其类型
+  var obj2 = new Object();
+      obj2.num = 10;
+      obj2.str = 'apple';
+      obj2.isNull = function(){
+        if(obj2.str.length==0){
+          return '字符串为空';//return true
+        }else{
+          return '不是空';
+        }
+        
+      }
+  console.log(obj2);
+  console.log(obj2.isNull());//不是空
+
+  //obj是一个对象:单个的实际对象 李晨
+  //obj2是一个对象:单个的实际对象 邓超
+
+  //创建一个模板-->工厂模式
+  //加工厂:制造人类
+  //属性:名字 身份证号 性别
+  //技能:唱歌(歌曲) 玩游戏(游戏名) 自我介绍(属性)
+   
+   function Person(name,code,sex){
+     //添加上相应的属性和方法,在构造函数里,必须通过this添加属性
+      this.name = name;
+      this.sex = sex;
+      this.code =code;
+      // Person.code = code;//在构造函数里,必须通过this添加属性
+
+      //方法
+      Person.prototype.sing = function(music){
+        console.log('演唱歌曲是:'+music);
+      }
+      Person.prototype.play = function(game){
+        console.log('游戏名:'+game)
+      }
+      Person.prototype.info = function(){
+        console.log('姓名:'+this.name+"性别:"+this.sex+"身份证号"+this.code);
+      }
+   }
+   
+   //通过对象的方式去引用Person函数
+   //new 的方式-->构造函数的引用(构造一个对象的雏形)
+   //制造第一个人(实例化)
+   var person1 = new Person('邓超','001','男');//参数可以传递也可以不传递
+   console.log(person1);
+   //调用属性
+   console.log(person1.code);
+   //使用方法
+   //技能1:唱歌
+   person1.sing('燃烧你的卡路里');
+
+   //制造第二个人(实例)
+  var person2 = new Person('李晨','002','女');
+  console.log(person2);
+  //调用属性：
+  console.log(person2.sex);
+  //使用技能
+  person2.play('贪吃蛇');
+
+  //方法占用内存
+  // 解决方法：把方法绑定到Person原型上
+  // 原型名.prototype.方法 = function(){}
+  </script>
+</body>
+</html>

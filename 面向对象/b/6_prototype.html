@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Insert a title</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+      var father={
+        bal:100000000,
+        car:"infiniti"
+      };
+      function Student(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+      }
+      Student.prototype=father;
+      Student.prototype.intr=function(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+      }
+      var lilei=new Student("Li Lei",11);
+      var hmm=new Student("Han Meimei",12);
+      console.dir(lilei);
+       console.dir(hmm);
+    </script>
+  </body>
+</html>

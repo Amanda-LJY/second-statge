@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+        // 练习案例1:去除字符串前边的空格
+            var str = '  ninijoj';
+            // 把空格替换成空的字符串
+            // replace(空白,'')replace(/\s/g,'');
+            function Itrim(str){
+            return  str.replace(/^\s*/g,'');
+
+            }
+            Itrim(str);
+            console.log(str);
+            console.log(Itrim(str));
+        // 练习案例2:去除字符串后边的空格
+        var str = '  ninijoj  ';
+            // 把空格替换成空的字符串
+            // replace(空白,'')replace(/\s/g,'');
+            function rtrim(str){
+            return  str.replace(/\s*$/g,'');
+
+            }
+            rtrim(str);
+            console.log('cbdavuh  ');
+            console.log(rtrim('cbdavuh  '));
+        // 练习案例3:去除字符串两端的空格
+        function ttrim(str){
+            return  str.replace(/(\s*$|^\s*)/g,'');
+
+            }
+            ttrim(str);
+            console.log(' cbd avuh  ');
+            console.log(ttrim(' cbda vuh  '));
+      
+        // 练习案例5:将英文句子中单词首字母变大写
+          // 可能会用到数组的方法: 
+          // arr.join(分隔符): 指定分隔符把数组元素拼成字符串
+
+
+       // 练习案例4:去除所有的空格
+        var str = "life was likes a box of chocolates you never know what you are gonna get!";
+        function fun(str){
+         return   str.replace(/\s/g,"");
+        }
+        fun(str);
+        console.log(fun(str));
+  document.write("<br>")
+    </script>
+    <script>
+      //  练习案例5:将英文句子中单词首字母变大写
+       var str = "life was likes a box of chocolates you never know what you are gonna get!";
+       function letter(str){
+        // 1)分割字符串，结果是一个数组的形式
+      
+       var pat=/\s/g
+       str.split(pat);
+       var str1 = str.split(pat);
+      //  2)依次取数组元素
+       for(var i=0;i<str1.length;i++){//i：下标 元素：arr[i]
+      //  取首字母：变成大写+后边的字符
+        str1[i] = str1[i].charAt(0).toUpperCase()+str1[i].slice(1);
+        
+       }
+       return str1.join(' ');
+       
+      }
+      letter(str);
+     console.log(letter(str));
+    </script>
+</body>
+</html>

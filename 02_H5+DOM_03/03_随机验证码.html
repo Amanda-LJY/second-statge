@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    canvas{
+     
+      border:1px solid black;
+      display: block;
+    
+    }
+
+  </style>
+</head>
+<body>
+  <canvas width='100'height='30' ></canvas>
+  <script>
+// 绘制一个验证码图片:
+// //1)验证码:6位随机字符 
+// 有点  点的数目 颜色随机 位置随机
+// 有线条(6) 颜色随机 位置随机
+// -------------------------------------
+// 颜色:rgb(r,g,b) 可以用这种颜色模式实现随机
+
+  
+    var str = '';
+    var arr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'];
+   
+    for(var i=0;i<6;i++){
+      var index = Math.floor(Math.random()*arr.length);
+      str += arr[index];
+    }
+   console.log(str);
+  console.log(index);
+ 
+  
+ 
+
+// console.log(arr1[index1]);
+
+  var canvas = document.querySelector('canvas');
+  var context = canvas.getContext('2d');
+  context.arc(index,index,1,0,2*Math.PI);
+
+function showText(str){
+    var canvas = document.querySelector('canvas');
+    var context = canvas.getContext('2d');
+        context.textBaseline = 'top';
+        context.font = '20px 微软雅黑';
+        // context.textAlign = 'center';
+        context.fillText(str,15,0);
+        
+
+}
+showText(str);
+  </script>
+</body>
+</html>

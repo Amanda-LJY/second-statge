@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul li{list-style: none;}
+  
+  </style>
+</head>
+<body>
+  <script>
+    //需求1:把指定字符串转换成无序列表的格式
+    // 格式如下
+    // 名字：鲁班七号 职业：射手 血量：60%
+    var str = "鲁班七号@射手&60%;后裔@射手&70%;貂蝉@法师&68%;孙悟空@刺客&70%";
+    var str= str.replace(/@/g," 职业:");
+    var str= str.replace(/&/g," 血量:");
+    
+    var str1 = str.split(";");
+    console.log(str1);
+
+    document.write("<ul>");
+    for(var i=0;i<str1.length;i++){
+      document.write('<li>名字: '+str1[i]+'</li>');
+      
+    }
+    
+   document.write("</ul");
+
+  </script>
+  <script>
+    // 需求2：写一个函数；
+    // 把文章的"指定词"用"指定颜色"标记出来
+    var str = '人生就是这样,有欢笑也有泪水,一部分人主要负责欢笑,另部分人主要负责泪水。回首人生,我发现我失去了很多,但是我并不难过,因为我知道将来我会失去更多。失败并不可怕,可怕的是你还相信这句话!';
+    // 使用方法：替换 replace(old, new)
+    function Mark(article,keyWords,color){
+      // 在正则里面使用变量
+      var reg = new RegExp(keyWords,'g');
+     return  article.replace(reg,"<mark style='background:"+color+"'>"+keyWords+"</mark>");
+    };
+   Mark(str,'人生','red');
+  document.write(Mark(str,'人生','red'));
+  
+  </script>
+  <script>
+  // 需求3：写一个函数：字符串去重
+  var str = "012523406897";
+  // var a = prompt("请输入字符");
+  //先找到下标对应的值相同，就输出一个下标
+  
+  str.indexOf('0')
+  console.log(str.indexOf('9'));
+//  函数名 remove(str)
+// -参数：str 传递的字符串
+// - 功能：给字符串去重
+// 结果:返回去重的字符串
+  function remove(str){
+    // 1)放一个空盒子，存储新的字符串
+    var  str1= '';
+    // var rs = "";
+    // 2)依次取旧字符串的元素,到新字符串里检验
+   for(var i=0;i<str.length;i++){
+    // i:字符下标,对应的字符 str.charAt(i)
+    var char = str.charAt(i);
+    console.log(char);
+    // 空盒子没有该字符,就添加进去
+     if(str1.indexOf(char)==-1){
+       str1 += str[i];
+        // rs = str1.concat(char);
+       
+     }
+     
+   }
+  console.log( str1);
+  };
+  remove(str);
+  remove('dasdcc');
+
+  </script>
+</body>
+</html>

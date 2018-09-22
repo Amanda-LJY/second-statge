@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Insert a title</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+      //学生: sname, sage, intr()
+      //图纸,constructor
+      function Student(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+      }
+      Student.prototype.intr=function(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+      }
+      //重写父对象中的toString方法
+      Student.prototype.toString=function(){
+        return `{sname:${this.sname},sage:${this.sage}}`;
+      }
+      Student.prototype.className="初一2班";
+      var lilei=new Student("Li Lei",11);
+      var hmm=new Student("Han Meimei",12);
+      console.dir(lilei);
+      lilei.intr();
+      console.dir(hmm);
+      hmm.intr();
+      console.log(lilei.intr);
+      console.log(hmm.intr);
+      console.log(lilei.intr==hmm.intr);//true
+      console.log(lilei.className);
+      console.log(hmm.className);
+      //lilei.className="初二2班";//仅为lilei添加自有属性className，原型中的className没变——错误
+      Student.prototype.className="初二2班";
+      console.log(lilei.className);
+      console.log(hmm.className);
+
+      function checkProperty(obj,pname){
+        if(obj.hasOwnProperty(pname))
+          console.log("自有");
+        //else if(obj[pname]!==undefined)
+        else if(pname in obj)
+          console.log("共有");
+        else
+          console.log("没有");
+      }
+      checkProperty(lilei,"sname");//自有
+      checkProperty(hmm,"className");//共有
+      checkProperty(lilei,"bal");//没有
+
+      console.log(lilei.toString());
+    </script>
+  </body>
+</html>

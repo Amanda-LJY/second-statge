@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <p> 文章内容：</p>
+    <textarea name="" id="" cols="30" rows="10" maxlength="150"></textarea>
+    <span>还可以输入150个字</span>
+  </div>
+  <script>
+  //需求：没输入一个字符
+  // 就要更新span里的信息：还剩余多少字符可以输
+  // 属于的字符 = 最大的字符个数-当前输入的字符数
+  var textarea = document.querySelector('textarea');
+  var span = document.querySelector('span');
+  textarea.oninput = function(){
+    var off = 150-textarea.value.length;
+    span.innerHTML = '还可以输入'+off+'个字';
+    if(off==0){
+      span.innerHTML ='输入已超过150个字';
+    }
+  }
+
+  </script>
+</body>
+</html>

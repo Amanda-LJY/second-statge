@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //arguments对象是函数的一个内置对象
+  function fun1(){
+    console.log(arguments);//数组
+  }  
+    fun1();//第一次调用 arguments []
+    fun1(20,30,24,45,'aa');//第二次调用 arguments[20, 30, 24, 45, "aa"]
+  console.log('----------------')
+
+
+  function fun2(num1,num2,num3){
+    //num1,num2是形参
+    // 'apple','amamda',13,14,520 是实参
+    console.log(arguments);//["apple", "amamda", 13, 14, 520]
+    console.log(arguments.length);//5 获取的实参的个数
+    console.log(arguments.callee);//函数本身
+    console.log(arguments.callee.length);//2 形参的个数
+
+    // 获取下标为1的实参
+    // 类数组对象，不能使用数组原生的API(方法)
+    console.log(arguments[1]);//amamda
+    // console.log(arguments.indexOf('apple'));//TypeError:arguments.indexOf is not a function
+
+  }  
+  fun2('apple','amamda',13,14,520);//["apple", "amamda", 13, 14, 520]
+  var str = 'aaadsfa';
+  console.log(str.indexOf());//-1
+  console.log(str.indexOf('f',2,5,'apple'));//5
+
+  //arguments对象可以做一些参数处理
+  function fun2(num1,num2){//num1和num2是形参
+    if(arguments.length != arguments.callee.length){
+      console.log('请传递正确的参数');
+   
+    }else{
+      console.log(num1+num2);
+    }
+   
+  }
+  fun2(10,20);//10,20是实际参数-->30
+  fun2(10,20,30);//10,20,30是实际参数 -->30
+
+  // 用函数 求任意个数的和 数值的和
+//函数：num()
+
+  function num(){
+    //arguments对象接受参数信息 参数对象
+    console.log(arguments);
+    //arguments除了参数以外，还有在其他字符
+    for(var i=0,sum=0;i<arguments.length;i++){
+      sum += arguments[i];
+    }
+    return sum;
+  }
+ 
+  console.log(num(20,30,40));//90
+  console.log(num(50,30,10));//90
+  </script>
+</body>
+</html>

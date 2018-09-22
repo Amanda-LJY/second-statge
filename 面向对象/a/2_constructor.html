@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Insert a title</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script>
+      //学生: sname, sage, intr()
+      function Student(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+        this.intr=function(){
+          console.log(`I'm ${this.sname}, I'm ${this.sage}`);
+        }
+      }
+      var lilei=new Student("Li Lei",11);
+      var hmm=new Student("Han Meimei",12);
+      console.dir(lilei);
+      lilei.intr();
+      console.dir(hmm);
+      hmm.intr();
+    </script>
+  </body>
+</html>

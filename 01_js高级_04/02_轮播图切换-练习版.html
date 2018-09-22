@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .picture{border:1px solid red;width: 390px;}
+    .picture img{display:none;}
+    .picture img:first-child{display:block;}
+    .points{border:1px solid blue;}
+    .points span{display:inline-block;width:20px;height: 20px;border-radius:50%;background:gray;margin:6px 8px;border:1px solid green;}
+    </style>
+</head>
+<body>
+  <p class="picture">
+    <img src="./images/01.jpeg" >
+    <img src="./images/02.jpeg" >
+    <img src="./images/03.jpeg" >
+  </p>
+  <p class="points">
+    <span></span>
+    <span></span>
+    <span></span>
+  </p>
+  <script>
+    var picture = document.querySelectorAll('.picture img');
+    var span = document.querySelectorAll('.points span');
+    // console.log(typeof(span));//object不能用数组方法
+    for(var i=0;i<span.length;i++){
+      (function(index){
+       
+        span[index].onclick = function(){
+          for(var j=0;j<picture.length;j++){
+          picture[j].style.display ='none';
+        }
+         picture[index].style.display = 'block';
+          
+        }
+      })(i)
+    }
+  </script>
+</body>
+</html>
